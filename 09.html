@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="searchApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="searchCont">
+        <input type="text" placeholder="enter name" ng-model="searchName">
+        <input type="number" placeholder="enter salary" ng-model="searchSalary">
+        <button ng-click="sub()">Submit</button>
+        <ul>
+            <li ng-repeat="employee in employees | filter:{name:searchName, salary:searchSalary}">{{employee.name}} - {{employee.salary}}</li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('searchApp',[])
+        app.controller('searchCont',function($scope){
+            $scope.employees = [
+            { name: 'John Doe', salary: 50000 },
+                { name: 'Jane Smith', salary: 60000 },
+                { name: 'Mike Johnson', salary: 55000 },
+                { name: 'Emily Davis', salary: 62000 },
+                { name: 'Chris Brown', salary: 58000 }
+            ]
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="crudApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="crudCont">
+        <input type="text" ng-model="name" placeholder="enter item">
+        <button ng-click="add()">add</button>
+        <p>Total Items: {{users.length}}</p>
+        <ul>
+            <li ng-repeat="user in users">Item:{{user.name}}
+                <button ng-click="remove()">remove</button>
+            </li>
+                
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('crudApp',[])
+        app.controller('crudCont',function($scope){
+            $scope.name=''
+            $scope.users=[];
+
+            $scope.add=function(){
+                if($scope.name){
+                    $scope.users.push({name:$scope.name});
+                    $scope.name=''
+                }
+                
+            }
+            
+            $scope.remove = function(index){
+                $scope.users.splice(index,1)
+            }
+        })
+    </script>
+</body> 
+</html>

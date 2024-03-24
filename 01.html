@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nameApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="nameCon">
+        <input type="text" placeholder="enter first name" ng-model="fn">
+        <input type="text" placeholder="enter last name" ng-model="ln">
+        <p>fullname: {{fuln()}}</p>
+    </div>
+
+    <script>
+        var app = angular.module('nameApp', [])
+        app.controller('nameCon', function($scope){
+            $scope.fn = "Joe";
+            $scope.ln = "Doe";
+
+            $scope.fuln = function() {
+ return $scope.fn + " " + $scope.ln;
+ };
+
+        })
+
+    </script>
+</body>
+</html>

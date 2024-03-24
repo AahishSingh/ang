@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nameApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="nameCont">
+        <p>Original Names</p>
+        <ul>
+            <li ng-repeat="name in names">{{name}}</li>
+        </ul>
+
+        <p>Uppercase Names</p>
+        <ul>
+            <li ng-repeat="name in names">{{name | uppercase}}</li>
+        </ul>
+    </div>
+
+    <script>
+         var app = angular.module('nameApp',[])
+        app.controller('nameCont',function($scope){
+            $scope.names = ['Mani', 'Ram', 'Sam'];
+        })
+    </script>
+</body>
+</html>

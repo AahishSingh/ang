@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calcApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="calcCont">
+        <input type="number" placeholder="enter a" ng-model="varA">
+        <input type="number" placeholder="enter b" ng-model="varB"><br>
+        <button ng-click="sum()">sum</button>
+        <button ng-click="sub()">sub</button>
+        <button ng-click="mul()">mul</button>
+        <button ng-click="div()">div</button>
+        <p>result:{{res}}</p>
+        </div>
+    <script>
+       var app = angular.module('calcApp', [])
+        app.controller('calcCont', function($scope){
+            $scope.varA=0;
+            $scope.varB=0;
+            $scope.res=0;
+            $scope.sum=function(){
+                $scope.res=$scope.varA+$scope.varB;
+            }
+            $scope.sub=function(){
+                $scope.res=$scope.varA-$scope.varB;
+            }
+            $scope.mul=function(){
+                $scope.res=$scope.varA*$scope.varB;
+            }
+            $scope.div=function(){
+               
+                if($scope.varB!=0){
+                  $scope.res=$scope.varA/$scope.varB;   
+                }
+                else{$scope.res='cannot divide by 0'}
+                
+            }
+            
+
+
+        })
+
+    </script>
+</body>
+</html>

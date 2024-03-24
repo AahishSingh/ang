@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="crudApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="crudCont">
+        <input type="text" ng-model="name" placeholder="enter name">
+        <input type="number" ng-model="age" placeholder="enter age"><br><br>
+        <button ng-click="add()">add</button>
+        <p>Total users: {{users.length}}</p>
+        <ul>
+            <li ng-repeat="user in users">name:{{user.name}} <br> age: {{user.age}}
+                <button ng-click="edit($index)">edit</button>
+                <button ng-click="remove()">remove</button>
+            </li>
+                
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('crudApp',[])
+        app.controller('crudCont',function($scope){
+            $scope.name=''
+            $scope.age=''
+            $scope.users=[];
+
+            $scope.add=function(){
+                if($scope.name && $scope.age){
+                    $scope.users.push({name:$scope.name , age:$scope.age});
+                    $scope.name=''
+                    $scope.age=''
+                }
+                
+            }
+
+            $scope.edit=function(index){
+                var updatedName = prompt("Enter new name", $scope.users[index].name);
+                var updatedAge = prompt("Enter new age", $scope.users[index].age);
+
+                if(updatedName != null && updatedAge != null){
+                    $scope.users[index].name = updatedName;
+                    $scope.users[index].age = updatedAge;
+                }
+            }
+            
+            $scope.remove = function(index){
+                $scope.users.splice(index,1)
+            }
+        })
+    </script>
+</body> 
+</html>

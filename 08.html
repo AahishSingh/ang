@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loginapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<body>
+    <div ng-controller="loginCont">
+        <input type="text" ng-model="name" placeholder="enter username">
+        <input type="password" ng-model="password" placeholder="enter password">
+        <button ng-click="login()">Login</button>
+    </div>
+    <script>
+        var app= angular.module('loginapp',[])
+        app.controller('loginCont',function($scope){  
+            $scope.name=''
+            $scope.password=''
+            $scope.login=function(){
+                if($scope.name === 'aahish' && $scope.password === '123'){
+                    alert('login sucessful')
+                }
+                else {
+                    alert('login failed')
+                }
+            }
+        })
+        
+    </script>
+
+</body>
+</html>

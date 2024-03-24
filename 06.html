@@ -1,0 +1,51 @@
+<!-- Develop an AngularJS program to create a simple to-do list application. Allow users to add, edit, and
+delete tasks. Note: The default values for tasks may be included in the program -->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="todoapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="todoCont">
+        <input type="text" ng-model="task" placeholder="enter task">
+        <button ng-click="addtask()">click</button>
+        <ul>
+            <li ng-repeat="task in tasks">{{task}}
+                <button ng-click="edit()">Edit</button>
+                <button ng-click="remove()">Remove</button>
+            </li>
+        </ul>
+    </div>
+    
+    <script>
+        var app = angular.module('todoapp',[])
+        app.controller('todoCont',function($scope){
+            $scope.tasks=[]
+
+            $scope.addtask=function(){
+                if($scope.task){
+                    $scope.tasks.push($scope.task)
+                    $scope.task=''
+                }
+            }
+
+            $scope.edit = function(index){
+                var updatedTask = prompt("Enter new task");
+                if(updatedTask!=null){
+                    $scope.tasks.splice(index,1,updatedTask)
+                }
+            }
+
+            $scope.remove = function(index){
+                $scope.tasks.splice(index,1)
+            }
+
+
+        })
+    </script>
+</body>
+</html>
